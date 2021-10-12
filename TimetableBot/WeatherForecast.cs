@@ -1,6 +1,6 @@
 using System;
 
-namespace TimetableBot
+namespace timetablebot
 {
     public class WeatherForecast
     {

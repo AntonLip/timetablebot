@@ -4,11 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using TimetableBot.Models.Interface;
 
-namespace TimetableBot.Controllers
+namespace timetablebot.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -20,23 +17,10 @@ namespace TimetableBot.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        //private readonly IBot _bot;
-        private readonly TelegramBotClient _botClient;
-        private readonly List<ICommand> _commands;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IBot bot)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            try
-            {
-                _botClient = bot.GetBotClientAsync().Result;
-                _commands = bot.GetCommands();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            
         }
 
         [HttpGet]
@@ -50,14 +34,6 @@ namespace TimetableBot.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
-        }
-
-        [HttpGet]
-        [Route("start")]
-        public async Task<OkResult> Start(string cmd)
-        {
-            
-            return Ok();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TimetableBot
+namespace timetablebot
 {
     public class Program
     {
@@ -16,22 +16,11 @@ namespace TimetableBot
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            var port = Environment.GetEnvironmentVariable("PORT");
-            return Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostContext, builder) =>
-                {                    
-                    
-                        builder.AddUserSecrets<Program>();
-                    
-                })
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                     .UseUrls("https://*:" + port);
+                    webBuilder.UseStartup<Startup>();
                 });
-        }
-            
     }
 }

@@ -20,7 +20,7 @@ namespace TimetableBot.Controllers
             _botClient = bot.GetBotClientAsync().Result;
             _commands = bot.GetCommands();
         }
-        
+
         [HttpPost]
         public async Task<OkResult> Post([FromBody] Update update)
         {

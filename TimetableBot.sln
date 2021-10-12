@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableBot", "TimetableBot\TimetableBot.csproj", "{60507E4F-B801-4CE9-AE84-3402FE262932}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timetablebot", "timetablebot\timetablebot.csproj", "{B0FF60FE-ADE8-49C0-B13D-B3FF91C7D7A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableBot.Models", "TimetableBot.Models\TimetableBot.Models.csproj", "{126B8F26-09CE-4036-978C-86DCA27D9186}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableBot.Models", "TimetableBot.Models\TimetableBot.Models.csproj", "{215699FA-1536-4E2C-9D92-749A196DFD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{60507E4F-B801-4CE9-AE84-3402FE262932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60507E4F-B801-4CE9-AE84-3402FE262932}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60507E4F-B801-4CE9-AE84-3402FE262932}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60507E4F-B801-4CE9-AE84-3402FE262932}.Release|Any CPU.Build.0 = Release|Any CPU
-		{126B8F26-09CE-4036-978C-86DCA27D9186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{126B8F26-09CE-4036-978C-86DCA27D9186}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{126B8F26-09CE-4036-978C-86DCA27D9186}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{126B8F26-09CE-4036-978C-86DCA27D9186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FF60FE-ADE8-49C0-B13D-B3FF91C7D7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FF60FE-ADE8-49C0-B13D-B3FF91C7D7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FF60FE-ADE8-49C0-B13D-B3FF91C7D7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FF60FE-ADE8-49C0-B13D-B3FF91C7D7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215699FA-1536-4E2C-9D92-749A196DFD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215699FA-1536-4E2C-9D92-749A196DFD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215699FA-1536-4E2C-9D92-749A196DFD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215699FA-1536-4E2C-9D92-749A196DFD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {73777868-559B-403F-BFD7-420B2E15F46F}
+		SolutionGuid = {53DAB88F-3D90-46B5-9815-F4F7FA11C0F2}
 	EndGlobalSection
 EndGlobal
