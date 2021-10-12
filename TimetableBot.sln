@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableBot", "TimetableBot\TimetableBot.csproj", "{60507E4F-B801-4CE9-AE84-3402FE262932}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableBot.Models", "TimetableBot.Models\TimetableBot.Models.csproj", "{126B8F26-09CE-4036-978C-86DCA27D9186}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60507E4F-B801-4CE9-AE84-3402FE262932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60507E4F-B801-4CE9-AE84-3402FE262932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60507E4F-B801-4CE9-AE84-3402FE262932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60507E4F-B801-4CE9-AE84-3402FE262932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{126B8F26-09CE-4036-978C-86DCA27D9186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{126B8F26-09CE-4036-978C-86DCA27D9186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{126B8F26-09CE-4036-978C-86DCA27D9186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{126B8F26-09CE-4036-978C-86DCA27D9186}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73777868-559B-403F-BFD7-420B2E15F46F}
+	EndGlobalSection
+EndGlobal
