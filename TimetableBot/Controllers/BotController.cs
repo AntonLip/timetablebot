@@ -17,7 +17,7 @@ namespace TimetableBot.Controllers
         private readonly List<ICommand> _commands;
         public BotController(IBot bot)
         {
-            _botClient = bot.GetBotClientAsync().Result;
+            _botClient = bot.GetBotClientAsync();
             _commands = bot.GetCommands();
         }
 

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Telegram.Bot;
+using TimetableBot.Models.Interface;
 
 namespace timetablebot.Controllers
 {
@@ -17,10 +19,13 @@ namespace timetablebot.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly TelegramBotClient _botClient;
+        private readonly List<ICommand> _commands;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger , IBot bot)
         {
             _logger = logger;
+            _botClient = bot.GetBotClientAsync();
+            _commands = bot.GetCommands();
         }
 
         [HttpGet]

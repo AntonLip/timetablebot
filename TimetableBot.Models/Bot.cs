@@ -9,26 +9,29 @@ namespace TimetableBot.Models
 {
     public class Bot :IBot
     {
-        private readonly TelegramBotClient botClient;
+        private  TelegramBotClient botClient;
         private  List<ICommand> commandsList;
         private readonly string _botKey;
-        private readonly string _botUrl;
+        private readonly string _hookUrl;
         private readonly string _botName;
-        public Bot(IOptions<BotSettings> options)
+        public  Bot(IOptions<BotSettings> options)
         {
             _botName = options.Value.BotName;
             _botKey = options.Value.Token;
-            _botUrl = options.Value.Url;
             botClient = new TelegramBotClient(_botKey);
             commandsList = new List<ICommand>();
             commandsList.Add(new StartCommand());
+            string hook = options.Value.Url + "api/bot";
+            SetHookToBot();
+
+        }
+        private async Task  SetHookToBot()
+        {
+             await botClient.SetWebhookAsync(_hookUrl);
         }
 
-        public  async Task<TelegramBotClient> GetBotClientAsync()
-        {
-            
-            string hook = _botUrl + "api/bot";
-            await botClient.SetWebhookAsync(hook);
+        public  TelegramBotClient GetBotClientAsync()
+        {         
             return botClient;
         }
 
