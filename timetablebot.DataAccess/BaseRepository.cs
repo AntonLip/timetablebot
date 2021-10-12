@@ -24,7 +24,7 @@ namespace TimetableBot.DataAccess
             _database = _mongoClient.GetDatabase(_mongoDbSettings.DatabaseName);
         }
 
-
+        [Obsolete]
         public virtual Task AddAsync(TModel obj, CancellationToken cancellationToken = default)
         {
             return GetCollection().InsertOneAsync(obj, cancellationToken);

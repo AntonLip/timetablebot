@@ -27,7 +27,7 @@ namespace timetablebot
         {
             services.Configure<BotSettings>(_configuration.GetSection(nameof(BotSettings)));
             services.Configure<MongoDBSettings>(_configuration.GetSection(nameof(MongoDBSettings)));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

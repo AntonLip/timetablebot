@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -13,17 +14,18 @@ namespace TimetableBot.Controllers
     [ApiController]
     public class BotController : ControllerBase
     {
-        private readonly TelegramBotClient _botClient;
+        private  TelegramBotClient _botClient;
         private readonly List<ICommand> _commands;
-        public BotController(IBot bot)
+        public BotController(IOptions<BotSettings> options, IBot bot)
         {
-            _botClient = bot.GetBotClientAsync();
+            _botClient = new TelegramBotClient(options.Value.Token);
             _commands = bot.GetCommands();
         }
 
         [HttpPost]
         public async Task<OkResult> Post([FromBody] Update update)
         {
+           
             if (update is null)
                 return Ok();
 
@@ -32,6 +34,7 @@ namespace TimetableBot.Controllers
             {
                 if (command.Contains(message))
                 {
+                    await _botClient.SendTextMessageAsync(update.Message.From.Id, "Hi");
                     await command.Execute(message, _botClient);
                     break;
                 }
