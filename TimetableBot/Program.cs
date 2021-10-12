@@ -29,7 +29,7 @@ namespace TimetableBot
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                     .UseUrls("https://k41timetablebot.herokuapp.com:" + port);
+                     .UseUrls("https://*:" + port);
                 });
         }
             
