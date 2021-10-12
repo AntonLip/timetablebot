@@ -6,11 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.2" />
     <PackageReference Include="Telegram.Bot" Version="16.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\timetablebot.DataAccess\TimetableBot.DataAccess.csproj" />
     <ProjectReference Include="..\TimetableBot.Models\TimetableBot.Models.csproj" />
+    <ProjectReference Include="..\TimetableBot.Services\TimetableBot.Services.csproj" />
   </ItemGroup>
 
 </Project>

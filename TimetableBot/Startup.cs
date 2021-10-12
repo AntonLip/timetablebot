@@ -5,27 +5,45 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using TimetableBot.DataAccess;
+using TimetableBot.Models;
+using TimetableBot.Models.Interface;
+using TimetableBot.Services;
 
 namespace timetablebot
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.Configure<BotSettings>(_configuration.GetSection(nameof(BotSettings)));
+            services.Configure<MongoDBSettings>(_configuration.GetSection(nameof(MongoDBSettings)));
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "1.0",
+                    Title = "timetable API  1.0",
+                });
+
+            });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddControllers();
+
+
+            services.AddScoped<ITimetableRepository, TimetableRepository>();
+            services.AddScoped<ITimetableService, TimetableService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,13 +53,23 @@ namespace timetablebot
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Exadel Bonus Plus API 1.0");
+            }
+            );
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/", context =>
+                {
+                    context.Response.Redirect("/swagger/");
+                    return Task.CompletedTask;
+                });
                 endpoints.MapControllers();
             });
         }
