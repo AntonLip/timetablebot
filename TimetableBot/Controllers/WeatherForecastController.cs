@@ -19,13 +19,10 @@ namespace timetablebot.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly TelegramBotClient _botClient;
         private readonly List<ICommand> _commands;
-        public WeatherForecastController(ILogger<WeatherForecastController> logger , IBot bot)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _botClient = bot.GetBotClientAsync();
-            _commands = bot.GetCommands();
         }
 
         [HttpGet]
