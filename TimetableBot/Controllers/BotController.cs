@@ -34,7 +34,7 @@ namespace TimetableBot.Controllers
             {
                 if (command.Contains(message))
                 {
-                    await _botClient.SendTextMessageAsync(update.Message.From.Id, "Hi");
+                    //await _botClient.SendTextMessageAsync(update.Message.From.Id, "Hi");
                     await command.Execute(message, _botClient);
                     break;
                 }
