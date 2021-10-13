@@ -7,7 +7,7 @@ namespace TimetableBot.Models.DTOModels
 
     public class LessonFilter
     {
-        public FilterFields FilterBy { get; set; }
+        public FilterFields FilterBy { get; set; } = new FilterFields();
         public string SortBy { get; set; }
     }
     public class FilterFields

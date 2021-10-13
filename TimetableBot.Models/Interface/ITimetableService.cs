@@ -10,7 +10,7 @@ namespace TimetableBot.Models.Interface
     public interface ITimetableService
     {
         Task<LessonDto> AddLesson(AddLessonDto model, CancellationToken cancellationToken = default);
-        Task<LessonDto> DeleteTimetable(Guid id, CancellationToken cancellationToken = default);
+        Task DeleteTimetable(CancellationToken cancellationToken = default);
         Task<IEnumerable<LessonDto>> GetTimetable(CancellationToken cancellationToken = default);        
         Task<LessonDto> GetLessonById(Guid id, CancellationToken cancellationToken = default);
         Task<LessonDto> DeleteLesson(Guid id, CancellationToken cancellationToken = default);

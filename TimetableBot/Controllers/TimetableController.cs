@@ -59,7 +59,7 @@ namespace TimetableBot.Controllers
         [Route("lesson/filtered")]
         [SwaggerResponse((int)HttpStatusCode.OK, Description = "Get filtered lessons", Type = typeof(ResultDto<List<LessonDto>>))]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
-        public async Task<ActionResult<ResultDto<IEnumerable<LessonDto>>>> GetFilteredLessons([FromBody] LessonFilter lessonFilter)
+        public async Task<ActionResult<ResultDto<IEnumerable<IEnumerable<LessonDto>>>>> GetFilteredLessons([FromBody] LessonFilter lessonFilter)
         {
             return Ok(await _timetableService.GetFilteredTimetable(lessonFilter));
         }

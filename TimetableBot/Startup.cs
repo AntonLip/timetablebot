@@ -42,9 +42,9 @@ namespace timetablebot
             services.AddControllers();
 
 
-            services.AddScoped<ITimetableRepository, TimetableRepository>();
-            services.AddScoped<ITimetableService, TimetableService>();
-            services.AddSingleton<IBot, Bot>();
+            services.AddTransient<ITimetableRepository, TimetableRepository>();
+            services.AddTransient<ITimetableService, TimetableService>();
+            services.AddTransient<IBot, Bot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

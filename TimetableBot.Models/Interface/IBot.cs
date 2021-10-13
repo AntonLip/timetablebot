@@ -7,7 +7,7 @@ namespace TimetableBot.Models.Interface
 {
     public interface IBot
     {
-        TelegramBotClient GetBotClientAsync();
+        //TelegramBotClient GetBotClientAsync();
         List<ICommand> GetCommands();
     }
 }

@@ -9,31 +9,36 @@ namespace TimetableBot.Models
 {
     public class Bot :IBot
     {
-        private  TelegramBotClient botClient;
+       // private  TelegramBotClient botClient;
         private  List<ICommand> commandsList;
-        private readonly string _botKey;
-        private readonly string _hookUrl;
-        private readonly string _botName;
-        public  Bot(IOptions<BotSettings> options)
+        private readonly ITimetableService _timetableService;
+        //private readonly string _botKey;
+        //private readonly string _hookUrl;
+        //private readonly string _botName;
+        //IOptions<BotSettings> options, 
+        public Bot(ITimetableService timetableService)
         {
-            _botName = options.Value.BotName;
-            _botKey = options.Value.Token;
-            botClient = new TelegramBotClient(_botKey);
+            _timetableService = timetableService;
+            //_botName = options.Value.BotName;
+            //_botKey = options.Value.Token;
+            //botClient = new TelegramBotClient(_botKey);
             commandsList = new List<ICommand>();
             commandsList.Add(new StartCommand());
-            string hook = options.Value.Url + "api/bot";
-            SetHookToBot();
+            commandsList.Add(new TimetableCommand(_timetableService));
+            commandsList.Add(new ClearTimetableCommand(_timetableService));
+            //string hook = options.Value.Url + "api/bot";
+            //SetHookToBot();
 
         }
-        private async Task  SetHookToBot()
-        {
-             await botClient.SetWebhookAsync(_hookUrl);
-        }
+        //private async Task  SetHookToBot()
+        //{
+        //     await botClient.SetWebhookAsync(_hookUrl);
+        //}
 
-        public  TelegramBotClient GetBotClientAsync()
-        {         
-            return botClient;
-        }
+        //public  TelegramBotClient GetBotClientAsync()
+        //{         
+        //    return botClient;
+        //}
 
         public List<ICommand> GetCommands()
         {

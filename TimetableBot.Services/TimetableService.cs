@@ -37,6 +37,7 @@ namespace TimetableBot.Services
             {
                 throw new ArgumentNullException("", Resource.ModelIsEmpty);
             }
+            model.LessonDate = model.LessonDate.AddDays(1);
             var lesson = _mapper.Map<Lesson>(model);
             await _timetableRepository.AddAsync(lesson, cancellationToken);
             return _mapper.Map<LessonDto>(lesson);
@@ -60,15 +61,9 @@ namespace TimetableBot.Services
             return !(history is null) ? _mapper.Map<LessonDto>(history) : throw new ArgumentNullException();
         }
 
-        public async Task<LessonDto> DeleteTimetable(Guid id, CancellationToken cancellationToken = default)
+        public async Task DeleteTimetable(CancellationToken cancellationToken = default)
         {
-            if (id == Guid.Empty)
-            {
-                throw new ArgumentNullException("", Resource.IdIsEmpty);
-            }
-
-            var lesson = await _timetableRepository.RemoveAsync(id, cancellationToken);
-            return !(lesson is null) ? _mapper.Map<LessonDto>(lesson) : throw new ArgumentNullException();
+            await _timetableRepository.DeleteAllLessons(cancellationToken);
         }
 
         public async Task<IEnumerable<IEnumerable<LessonDto>>> GetFilteredTimetable(LessonFilter lessonFilter, CancellationToken cancellationToken = default)
@@ -367,7 +362,7 @@ namespace TimetableBot.Services
         public async Task<FileDto> GetTimetableInDocxAsync(LessonFilter lessonFilter, CancellationToken cancellationToken = default)
         {
             FileDto fileDto = new FileDto();
-            var timetableList =await GetFilteredTimetable(lessonFilter, cancellationToken);
+            var timetableList = await GetFilteredTimetable(lessonFilter, cancellationToken);
             if (timetableList.Count() == 0)
                 throw new ArgumentNullException();
             using (MemoryStream memoryStream = new MemoryStream())
@@ -438,12 +433,10 @@ namespace TimetableBot.Services
                             table.Append(tr2);
                         }
                     }
-                        
-
                     mainPart.Document.Body.Append(table);
 
                     mainPart.Document.Save();
-                    
+
                 }
                 fileDto.FileData = memoryStream.ToArray();
                 fileDto.FileName = "timetable.docx";
