@@ -445,7 +445,14 @@ namespace TimetableBot.Services
             }
         }
 
-
+        public async Task<List<LessonDto>> InsertManyLessons(List<AddLessonDto> lessonDtos, CancellationToken cancellationToken = default)
+        {
+            if (lessonDtos is null)
+                throw new ArgumentException("", Resource.ModelIsEmpty);
+            var lessonsDB = _mapper.Map<List<Lesson>>(lessonDtos);
+            await _timetableRepository.InsertManyLesson(lessonsDB, cancellationToken);
+            return _mapper.Map<List<LessonDto>>(lessonsDB);
+        }
         private static string GetValue(SpreadsheetDocument doc, Cell cell)
         {
             string value = cell.CellValue.InnerText;

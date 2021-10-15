@@ -84,6 +84,15 @@ namespace TimetableBot.Controllers
             var result = await _timetableService.AddLesson(lesson);
             return Ok(result);
         }
+        [HttpPost]
+        [Route("lesson/addlessonsList")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Description = "Add lesson", Type = typeof(ResultDto<LessonDto>))]
+        [SwaggerResponse((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult<List<LessonDto>>> AddLessonsList([FromBody] List<AddLessonDto> lessons)
+        {
+            var result = await _timetableService.InsertManyLessons(lessons);
+            return Ok(result);
+        }
 
         [HttpGet]
         [Route("lesson/{lessonId:Guid}")]

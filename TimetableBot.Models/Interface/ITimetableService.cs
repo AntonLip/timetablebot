@@ -18,5 +18,6 @@ namespace TimetableBot.Models.Interface
         Task<int> CreateTimetableFromFile(IFormFile body, CancellationToken cancellationToken = default);
         Task<LessonDto> UpdateLesson(Guid lessonId, LessonDto lessonDto, CancellationToken cancellationToken = default);
         Task<FileDto> GetTimetableInDocxAsync(LessonFilter lessonFilter, CancellationToken cancellationToken = default);
+        Task<List<LessonDto>> InsertManyLessons(List<AddLessonDto> lessonDtos, CancellationToken cancellationToken = default);
     }
 }
