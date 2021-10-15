@@ -73,7 +73,7 @@ namespace TimetableBot.Models.Command
             foreach (var lessons in lessonDtos)
             {
                 returnString += lessons.First(p => true).LessonDate.ToShortDateString().ToString() + "\n";
-                returnString += lessons.First(p => true).DayOfWeek + "\n";
+                returnString += lessons.First(p => true).LessonDate.DayOfWeek + "\n";
                 foreach (var lesson in lessons)
                 {
                     returnString += lesson.LessonInDayNumber + "ая пара " + lesson.DisciplineName + " " +

@@ -111,10 +111,7 @@ namespace TimetableBot.Services
 
             string groupNumber = String.Empty;
             string disciplineName = String.Empty;
-            string lecturalName = String.Empty;
-            int numberOfWeek = 0;
-            string dayOfWeek = String.Empty;
-            int dayInWeekNumber = 0;
+            string lecturalName = String.Empty;          
             DateTime lessonDate = DateTime.Now;
             int lessonInDayNumber = 0;
             string lessonType = String.Empty;
@@ -156,23 +153,7 @@ namespace TimetableBot.Services
                                     break;
                                 if (idx < 8)
                                 {
-                                    if (idx == 1)
-                                    {
-                                        int x;
-                                        Int32.TryParse(val, out x);
-                                        numberOfWeek = x;
-                                    }
-                                    if (idx == 2)
-                                    {
-                                        dayOfWeek = val;
-                                    }
-
-                                    if (idx == 3)
-                                    {
-                                        int x;
-                                        Int32.TryParse(val, out x);
-                                        dayInWeekNumber = x;
-                                    }
+                                    
                                     if (idx == 4)
                                     {
                                         int day, month, year;
@@ -280,10 +261,8 @@ namespace TimetableBot.Services
                                     if (idy == 7)
                                     {
                                         idy = 0;
-                                        //await sendLessonToAPIAsync(lesson);
-                                        if (groupNumber != "431А" && groupNumber != "431Б" &&
-                                            groupNumber != "441А" && groupNumber != "441Б" &&
-                                            groupNumber != "451А" && groupNumber != "451Б")
+                                        if (groupNumber == "434" || groupNumber == "432" || groupNumber == "433" ||
+                                            groupNumber == "443" && groupNumber == "442" && groupNumber == "444")
                                         {
 
                                             if (lecturalName != "" && disciplineName != "")
@@ -293,20 +272,14 @@ namespace TimetableBot.Services
                                                     lessons.Add(new Lesson()
                                                     {
                                                         AuditoreNumber = auditoreNumber,
-                                                        DayInWeekNumber = dayInWeekNumber,
-                                                        DayOfWeek = dayOfWeek,
                                                         DisciplineName = disciplineName,
                                                         GroupNumber = groupNumber,
                                                         IsDeleted = false,
                                                         LecturalName = lecturalName,
-                                                        InfoForcadets = null,
-                                                        InfoForEngeneers = null,
-                                                        InfoForLectural = null,
                                                         LessonDate = lessonDate,
                                                         LessonInDayNumber = lessonInDayNumber,
                                                         LessonNumber = lessonNumber,
                                                         LessonType = lessonType,
-                                                        NumberOfWeek = numberOfWeek
                                                     });
 
 

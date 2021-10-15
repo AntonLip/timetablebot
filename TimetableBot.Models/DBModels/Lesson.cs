@@ -8,9 +8,6 @@ namespace TimetableBot.Models.DBModels
     {
         [BsonId]       
         public Guid Id { get; set ; }
-        public int NumberOfWeek { get; set; }
-        public string DayOfWeek { get; set; }
-        public int DayInWeekNumber{ get; set; }
         public int LessonNumber { get; set; }
         public string GroupNumber { get; set; }
         public int LessonInDayNumber { get; set; }
@@ -22,9 +19,6 @@ namespace TimetableBot.Models.DBModels
         public string AuditoreNumber { get; set; }
 
         public bool IsDeleted { get; set; }
-        public string InfoForLectural { get; set; }
-        public string InfoForEngeneers { get; set; }
-        public string InfoForcadets { get; set; }
 
        
     }
