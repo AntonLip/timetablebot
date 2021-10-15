@@ -15,9 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\timetablebot.DataAccess\TimetableBot.DataAccess.csproj" />
     <ProjectReference Include="..\TimetableBot.Models\TimetableBot.Models.csproj" />
-    <ProjectReference Include="..\TimetableBot.Services\TimetableBot.Services.csproj" />
+    <ProjectReference Include="..\timetablebot.Service\timetablebot.Service.csproj" />
   </ItemGroup>
 
 </Project>

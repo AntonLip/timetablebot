@@ -426,6 +426,7 @@ namespace TimetableBot.Services
             await _timetableRepository.InsertManyLesson(lessonsDB, cancellationToken);
             return _mapper.Map<List<LessonDto>>(lessonsDB);
         }
+        
         private static string GetValue(SpreadsheetDocument doc, Cell cell)
         {
             string value = cell.CellValue.InnerText;
