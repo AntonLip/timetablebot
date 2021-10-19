@@ -7,9 +7,8 @@ namespace TimetableBot.Models.Interface
     public interface ICommand
     {
         public string Name { get; }
-
-        public abstract Task Execute(Message message, TelegramBotClient client);
-
-        public abstract bool Contains(Message message);
+        Task Handle(Message message, CallbackQuery query, TelegramBotClient client);
+        Task Execute(Message message, CallbackQuery query, TelegramBotClient client);
+        bool Contains(Message message);
     }
 }
