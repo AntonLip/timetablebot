@@ -11,19 +11,16 @@ namespace TimetableBot.Models
 {
     public abstract class BaseCommand : ICommand
     {
-        private readonly ITimetableService _timetableService;
+        protected ITimetableService _timetableService;
         public string Name { get; }
         public BaseCommand(ITimetableService timetableService)
         {
             _timetableService = timetableService;
         }
 
-        public abstract bool Contains(Message message);         
+        public abstract bool Contains(Message message);
 
-        public virtual async Task Execute(Message message, CallbackQuery query, TelegramBotClient client)
-        {
-            throw new Exception();
-        }
+        public abstract  Task Execute(Message message, CallbackQuery query, TelegramBotClient client);
         protected string GetStringFromLessons(IEnumerable<IEnumerable<LessonDto>> lessonDtos)
         {
             var returnString = string.Empty;

@@ -26,14 +26,14 @@ namespace TimetableBot.Models.Command
             return message.Text.Contains(this.Name);
         }
 
-        public Task Execute(Message message, CallbackQuery query, TelegramBotClient client)
+        public override async Task Execute(Message message, CallbackQuery query, TelegramBotClient client)
         {
-            throw new NotImplementedException();
+            await Handle(message, query, client);
         }
 
-        public Task Handle(Message message, CallbackQuery query, TelegramBotClient client)
+        public override async Task Handle(Message message, CallbackQuery query, TelegramBotClient client)
         {
-            throw new NotImplementedException();
+           await _timetableService.DeleteTimetable();
         }
 
        

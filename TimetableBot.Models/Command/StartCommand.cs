@@ -9,7 +9,7 @@ namespace TimetableBot.Models.Command
 {
     public class StartCommand : BaseCommand, ICommand
     {
-        public string Name => @"/start";
+        public new string Name => @"/start";
 
         public StartCommand( ITimetableService timetableService)
             :base(timetableService)

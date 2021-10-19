@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Telegram.Bot;
+﻿using System.Collections.Generic;
 using TimetableBot.Models.Command;
 using TimetableBot.Models.Interface;
 
@@ -14,9 +11,9 @@ namespace TimetableBot.Models
         {
             commandsList = new List<ICommand>();
             commandsList.Add(new StartCommand(timetableService));
-            commandsList.Add(new TimetableCommand(timetableService));
             commandsList.Add(new ClearTimetableCommand(timetableService));
             commandsList.Add(new StudentCommand(timetableService));
+            commandsList.Add(new LecturalCommand(timetableService));
         }      
 
         public List<ICommand> GetCommands()

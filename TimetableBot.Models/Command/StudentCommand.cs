@@ -15,7 +15,7 @@ namespace TimetableBot.Models.Command
             : base(timetableService)
         {
         }
-        public string Name => @"/students";
+        public new string Name => @"/students";
 
 
         public override bool Contains(Message message)
@@ -26,17 +26,15 @@ namespace TimetableBot.Models.Command
             return message.Text.Contains(this.Name);
         }
         public override async Task Execute(Message message, CallbackQuery query, TelegramBotClient client)
-        {
-            long chatId = 0;
-            string[] filterParameter = null;
+        {             
             if (!(query is null))
             {
                 await base.Handle(message, query, client);
             }
             else
             {
-                chatId = message.Chat.Id;
-                filterParameter = message.Text.Split(' ');
+                long chatId = message.Chat.Id;
+                var filterParameter = message.Text.Split(' ');
                 InlineKeyboardButton gr442 = new InlineKeyboardButton();
                 gr442.CallbackData = @"/students gr 442";
                 gr442.Text = @"442";

@@ -35,8 +35,8 @@ namespace timetablebot.Service
             try
 
             {
-                var lessons = JsonConvert.DeserializeObject<List<List<LessonDto>>>(resultContent);
-                return lessons;
+                var lessons = JsonConvert.DeserializeObject<ResultDto<List<List<LessonDto>>>>(resultContent);
+                return lessons.Value;
             }
             catch (Exception ex)
             { Console.WriteLine(ex.Message); }
