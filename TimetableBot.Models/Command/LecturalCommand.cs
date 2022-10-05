@@ -46,11 +46,15 @@ namespace TimetableBot.Models.Command
                 InlineKeyboardButton liplButton = new InlineKeyboardButton();
                 liplButton.CallbackData = @"/lectural L Липлянин";
                 liplButton.Text = @"Липлянин";
+                InlineKeyboardButton chiglButton = new InlineKeyboardButton();
+                liplButton.CallbackData = @"/lectural L Чигилинский";
+                liplButton.Text = @"Чигилинский";
                 List<List<InlineKeyboardButton>> inlineKeyboardButtons = new List<List<InlineKeyboardButton>>();
                 var list = new List<InlineKeyboardButton>();
                 list.Add(perhovaButton);
                 list.Add(paltsevButton);
                 list.Add(liplButton);
+                list.Add(chiglButton);
                 inlineKeyboardButtons.Add(list);
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup(inlineKeyboardButtons);
                 await client.SendTextMessageAsync(chatId, "Выберите фамилию", parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown, replyMarkup: inlineKeyboardMarkup);

@@ -63,7 +63,7 @@ namespace TimetableBot.Models
             }
             FilterFields lessonFilter = new FilterFields();
             lessonFilter.DateStart = DateTime.Today;
-            lessonFilter.DateEnd = DateTime.Today;
+            lessonFilter.DateEnd = DateTime.Today.AddDays(6);
             if (filterParameter[1] == "gr")
                 lessonFilter.Group = filterParameter[2];
             else
